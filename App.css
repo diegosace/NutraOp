@@ -1,0 +1,417 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos específicos del componente App */
+.App {
+  text-align: center;
+  background-color: var(--page-background);
+  min-height: 100vh;
+  color: var(--dark-text);
+}
+
+/* Estilos para contenedores principales */
+.main-container {
+  background-color: var(--page-background);
+  min-height: 100vh;
+}
+
+/* Estilos para tarjetas/módulos */
+.assessment-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--input-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos específicos para secciones de formulario */
+.form-section-header {
+  color: var(--nutri-blue);
+  font-weight: 600;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--light-blue-accent);
+  padding-bottom: 8px;
+}
+
+/* Espaciado para contenido dentro de secciones */
+.form-section .grid {
+  gap: 1rem;
+}
+
+.form-section .space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+/* Estilos adicionales específicos del componente App */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Estilos para campos dentro de grids */
+.grid input,
+.grid select,
+.grid textarea {
+  width: 100%;
+}
+
+/* Estilos para campos requeridos */
+.required-field label::after {
+  content: " *";
+  color: #dc3545;
+}
+
+/* Estilos para campos en secciones de formulario */
+.form-section input,
+.form-section select,
+.form-section textarea {
+  margin-bottom: 0;
+}
+
+.form-section label {
+  margin-bottom: 5px;
+}
+
+/* Estilos para contenedores de campos con iconos */
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon input {
+  padding-left: 2.5rem;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--medium-text);
+  font-size: 1rem;
+}
+
+/* Estilos para campos en línea */
+.inline-fields {
+  display: flex;
+  gap: 0.5rem;
+  align-items: end;
+}
+
+.inline-fields .form-group {
+  margin-bottom: 0;
+}
+
+/* Espaciado mejorado para campos en dispositivos móviles */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .inline-fields {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Estilos para paneles de datos calculados */
+.calculated-data-panel {
+  background-color: var(--calculated-data-panel-bg-blue);
+  border: 1px solid var(--light-blue-accent);
+}
+
+.calculated-data-panel.green-variant {
+  background-color: var(--calculated-data-panel-bg-green);
+  border: 1px solid var(--healthy-green-accent);
+}
+
+/* Integración específica con GeneralDataModule */
+.anthropometric-calculated-section {
+  background-color: #EBF5FB;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  border: 2px solid #B4D7F2;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos para datos calculados en formato legacy (con inputs readonly) */
+.calculated-readonly-input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--nutri-blue) !important;
+  font-weight: 700 !important;
+  font-size: 1.3em !important;
+  padding: 0 !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  text-align: right !important;
+}
+
+/* Contenedor para datos antropométricos calculados */
+.anthropometric-data-container .calculated-data-item {
+  border-bottom: 1px solid #D6EAF8;
+  padding: 8px 0;
+  margin-bottom: 0;
+}
+
+.anthropometric-data-container .calculated-data-item:last-child {
+  border-bottom: none;
+}
+
+/* Título de sección para datos calculados */
+.calculated-section-title {
+  color: var(--nutri-blue);
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calculated-section-title::before {
+  content: "🧮";
+  font-size: 1em;
+}
+
+/* Títulos con barra de color */
+.calculated-section-title-bar {
+  background-color: var(--nutri-blue);
+  color: white;
+  padding: 12px 20px;
+  margin: -20px -20px 20px -20px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calculated-section-title-bar::before {
+  content: "🧮";
+  font-size: 1.1em;
+}
+
+/* Adaptación para contenedores específicos del GeneralDataModule */
+.anthropometric-data-container {
+  background-color: #EBF5FB;
+  border: 2px solid #B4D7F2;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos mejorados para campos de solo lectura en secciones calculadas */
+.anthropometric-data-container input[readonly],
+.calculated-data-section input[readonly] {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--nutri-blue);
+  font-weight: 700;
+  font-size: 1.3em;
+  text-align: right;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Labels para datos calculados */
+.anthropometric-data-container label,
+.calculated-data-section label {
+  color: var(--medium-text);
+  font-weight: normal;
+  font-size: 14px;
+}
+
+/* Responsive para App.css */
+@media (max-width: 768px) {
+  .anthropometric-data-container,
+  .anthropometric-calculated-section {
+    padding: 15px;
+  }
+  
+  .calculated-section-title-bar {
+    margin: -15px -15px 15px -15px;
+    padding: 10px 15px;
+    font-size: 1.1em;
+  }
+  
+  .calculated-readonly-input {
+    font-size: 1.2em !important;
+    text-align: left !important;
+  }
+}
+
+/* Estilos específicos para botones en formularios de evaluación */
+.assessment-form .btn-primary,
+.assessment-form .btn-secondary,
+.assessment-form .btn-outline {
+  margin-top: 10px;
+}
+
+/* Botones de navegación entre secciones */
+.section-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--input-border);
+}
+
+.section-navigation .btn-group {
+  gap: 12px;
+}
+
+/* Botones específicos para acciones de cálculo */
+.calculation-button {
+  background-color: var(--healthy-green-accent);
+  color: var(--dark-text);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.calculation-button:hover {
+  background-color: #8BC7BA;
+  transform: translateY(-1px);
+}
+
+.calculation-button:active {
+  background-color: #7AB3A6;
+  transform: translateY(0);
+}
+
+.calculation-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(162, 217, 206, 0.25);
+}
+
+/* Botones de acción peligrosa (eliminar, limpiar) */
+.btn-danger,
+.button-danger {
+  background-color: #dc3545;
+  color: var(--card-background);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.btn-danger:hover,
+.button-danger:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.btn-danger:active,
+.button-danger:active {
+  background-color: #bd2130;
+  transform: translateY(0);
+}
+
+.btn-danger:focus,
+.button-danger:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Botones de éxito/confirmación */
+.btn-success,
+.button-success {
+  background-color: #28a745;
+  color: var(--card-background);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.btn-success:hover,
+.button-success:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-success:active,
+.button-success:active {
+  background-color: #1e7e34;
+  transform: translateY(0);
+}
+
+.btn-success:focus,
+.button-success:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Integración con componentes legacy que usan clases de Tailwind */
+.form-section button:not([class*="btn-"]):not([class*="button-"]) {
+  @apply btn-primary;
+}
+
+/* Botones flotantes para acciones rápidas */
+.btn-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 0;
+}
+
+.btn-floating:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive específico para App */
+@media (max-width: 768px) {
+  .section-navigation {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .section-navigation .btn-group {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .btn-floating {
+    bottom: 15px;
+    right: 15px;
+    width: 48px;
+    height: 48px;
+  }
+}

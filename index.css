@@ -1,0 +1,788 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos personalizados para barras deslizantes */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #4f46e5;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #4f46e5;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Animaciones */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Variables CSS para la paleta de colores */
+:root {
+  --page-background: #F8F9FA;
+  --card-background: #FFFFFF;
+  --nutri-blue: #357ABD;
+  --light-blue-accent: #A0C4FF;
+  --healthy-green-accent: #A2D9CE;
+  --dark-text: #333333;
+  --medium-text: #555555;
+  --light-text-placeholder: #AAAAAA;
+  --input-border: #CED4DA;
+  --calculated-data-panel-bg-blue: #EBF5FB;
+  --calculated-data-panel-bg-green: #E8F5E9;
+}
+
+/* Estilos globales base */
+body {
+  margin: 0;
+  background-color: var(--page-background);
+  color: var(--dark-text);
+  font-family: 'Arial', 'Helvetica', 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Clases utilitarias personalizadas para la aplicación */
+.page-background {
+  background-color: var(--page-background);
+}
+
+.card-background {
+  background-color: var(--card-background);
+}
+
+.nutri-blue {
+  color: var(--nutri-blue);
+}
+
+.nutri-blue-bg {
+  background-color: var(--nutri-blue);
+}
+
+.light-blue-accent {
+  color: var(--light-blue-accent);
+}
+
+.light-blue-accent-bg {
+  background-color: var(--light-blue-accent);
+}
+
+.healthy-green-accent {
+  color: var(--healthy-green-accent);
+}
+
+.healthy-green-accent-bg {
+  background-color: var(--healthy-green-accent);
+}
+
+.dark-text {
+  color: var(--dark-text);
+}
+
+.medium-text {
+  color: var(--medium-text);
+}
+
+.light-text-placeholder {
+  color: var(--light-text-placeholder);
+}
+
+.input-border {
+  border-color: var(--input-border);
+}
+
+.calculated-panel-blue {
+  background-color: var(--calculated-data-panel-bg-blue);
+}
+
+.calculated-panel-green {
+  background-color: var(--calculated-data-panel-bg-green);
+}
+
+/* Estilos para secciones como tarjetas (cards) */
+.form-section {
+  background-color: var(--card-background);
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Títulos dentro de las secciones */
+.form-section h2,
+.form-section h3 {
+  color: var(--nutri-blue);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Variantes adicionales para diferentes tipos de secciones */
+.section-card {
+  background-color: var(--card-background);
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section-card h2,
+.section-card h3 {
+  color: var(--nutri-blue);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Sección con énfasis (para datos importantes) */
+.section-card.emphasized {
+  border-left: 4px solid var(--nutri-blue);
+  box-shadow: 0 4px 12px rgba(53, 122, 189, 0.1);
+}
+
+/* Sección para datos calculados */
+.section-card.calculated {
+  background-color: var(--calculated-data-panel-bg-blue);
+  border: 1px solid var(--light-blue-accent);
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInSubtle {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.animate-fadeInSubtle {
+  animation: fadeInSubtle 0.3s ease-in-out;
+}
+
+/* Estilos para campos de entrada de datos */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+select,
+textarea,
+.form-input {
+  border: 1px solid var(--input-border);
+  background-color: var(--card-background);
+  padding: 10px 12px;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--dark-text);
+  font-size: 14px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Estado focus para campos de entrada */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+select:focus,
+textarea:focus,
+.form-input:focus {
+  border-color: var(--nutri-blue);
+  box-shadow: 0 0 0 0.2rem rgba(53, 122, 189, 0.25);
+  outline: none;
+}
+
+/* Estilos para placeholders */
+input::placeholder,
+textarea::placeholder,
+.form-input::placeholder {
+  color: var(--light-text-placeholder);
+  opacity: 1;
+}
+
+/* Estilos específicos para select */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  padding-right: 2.5rem;
+}
+
+/* Estilos para textarea */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Estilos para etiquetas de campos */
+label,
+.form-label {
+  color: var(--medium-text);
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Estilos para unidades y texto auxiliar */
+.field-unit,
+.input-unit {
+  color: var(--medium-text);
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+/* Contenedor para campos con unidades */
+.input-with-unit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-with-unit input {
+  flex: 1;
+}
+
+/* Estados disabled */
+input:disabled,
+select:disabled,
+textarea:disabled,
+.form-input:disabled {
+  background-color: #f8f9fa;
+  border-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* Estados de error */
+input.error,
+select.error,
+textarea.error,
+.form-input.error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Estados de éxito */
+input.success,
+select.success,
+textarea.success,
+.form-input.success {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Estilos mejorados para la sección de Datos Calculados Antropométricos */
+.calculated-data-section,
+#datos-calculados {
+  background-color: #EBF5FB;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  border: 2px solid #B4D7F2;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* Variante verde para datos calculados */
+.calculated-data-section.green-variant {
+  background-color: var(--calculated-data-panel-bg-green);
+  border: 2px solid #A2D9CE;
+}
+
+/* Título de la sección con barra de color (Opción A) */
+.calculated-data-section .section-title-bar,
+#datos-calculados .section-title-bar {
+  background-color: var(--nutri-blue);
+  color: white;
+  padding: 12px 20px;
+  margin: -20px -20px 20px -20px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icono de calculadora para el título */
+.calculated-data-section .section-title-bar::before,
+#datos-calculados .section-title-bar::before {
+  content: "🧮";
+  font-size: 1.1em;
+}
+
+/* Título de la sección sin barra (Opción B) */
+.calculated-data-section .section-title-simple,
+#datos-calculados .section-title-simple {
+  color: var(--nutri-blue);
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icono de calculadora para título simple */
+.calculated-data-section .section-title-simple::before,
+#datos-calculados .section-title-simple::before {
+  content: "🧮";
+  font-size: 1em;
+}
+
+/* Contenedor para cada dato calculado */
+.calculated-data-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #D6EAF8;
+}
+
+/* Quitar borde del último elemento */
+.calculated-data-item:last-child {
+  border-bottom: none;
+}
+
+/* Estilo para las etiquetas de datos calculados */
+.calculated-data-label {
+  color: var(--medium-text);
+  font-weight: normal;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Estilo para los valores calculados */
+.calculated-data-value {
+  color: var(--nutri-blue);
+  font-weight: 700;
+  font-size: 1.3em;
+  margin: 0;
+  text-align: right;
+}
+
+/* Variante con texto oscuro para valores */
+.calculated-data-value.dark-text {
+  color: var(--dark-text);
+}
+
+/* Grid layout para datos calculados */
+.calculated-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* Item individual en el grid */
+.calculated-data-grid-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 0;
+  border-bottom: 1px solid #D6EAF8;
+}
+
+.calculated-data-grid-item:last-child {
+  border-bottom: none;
+}
+
+.calculated-data-grid-item .calculated-data-label {
+  font-size: 13px;
+  margin-bottom: 2px;
+  color: var(--medium-text);
+}
+
+.calculated-data-grid-item .calculated-data-value {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--nutri-blue);
+}
+
+/* Layout alternativo en columnas */
+.calculated-data-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.calculated-data-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.calculated-data-column .calculated-data-item {
+  margin-bottom: 0;
+}
+
+/* Estilos para datos destacados */
+.calculated-data-item.highlighted {
+  background-color: rgba(53, 122, 189, 0.05);
+  border-radius: 4px;
+  padding: 12px 8px;
+  border-bottom: 1px solid #B4D7F2;
+  margin: 4px 0;
+}
+
+.calculated-data-item.highlighted:last-child {
+  border-bottom: 1px solid #B4D7F2;
+}
+
+/* Estados especiales para valores */
+.calculated-data-value.warning {
+  color: #F39C12;
+}
+
+.calculated-data-value.success {
+  color: #27AE60;
+}
+
+.calculated-data-value.danger {
+  color: #E74C3C;
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+  .calculated-data-section,
+  #datos-calculados {
+    padding: 15px;
+  }
+  
+  .calculated-data-section .section-title-bar,
+  #datos-calculados .section-title-bar {
+    margin: -15px -15px 15px -15px;
+    padding: 10px 15px;
+    font-size: 1.1em;
+  }
+  
+  .calculated-data-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px 0;
+  }
+  
+  .calculated-data-value {
+    font-size: 1.2em;
+    text-align: left;
+  }
+  
+  .calculated-data-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .calculated-data-columns {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .calculated-data-column {
+    min-width: 100%;
+  }
+}
+
+/* Estilos para botones - Consistencia en toda la aplicación */
+
+/* Botón primario */
+.btn-primary,
+button.btn-primary,
+.button-primary {
+  background-color: var(--nutri-blue);
+  color: var(--card-background);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s ease-in-out, transform 0.1s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-primary:hover,
+button.btn-primary:hover,
+.button-primary:hover {
+  background-color: #306BAA;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active,
+button.btn-primary:active,
+.button-primary:active {
+  background-color: #2A5D99;
+  transform: translateY(0);
+}
+
+.btn-primary:focus,
+button.btn-primary:focus,
+.button-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(53, 122, 189, 0.25);
+}
+
+/* Botón primario deshabilitado */
+.btn-primary:disabled,
+button.btn-primary:disabled,
+.button-primary:disabled {
+  background-color: var(--light-text-placeholder);
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.65;
+}
+
+/* Botón secundario - Opción A (Fondo claro) */
+.btn-secondary,
+button.btn-secondary,
+.button-secondary {
+  background-color: #E9ECEF;
+  color: var(--nutri-blue);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, transform 0.1s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-secondary:hover,
+button.btn-secondary:hover,
+.button-secondary:hover {
+  background-color: var(--nutri-blue);
+  color: var(--card-background);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active,
+button.btn-secondary:active,
+.button-secondary:active {
+  background-color: #306BAA;
+  transform: translateY(0);
+}
+
+.btn-secondary:focus,
+button.btn-secondary:focus,
+.button-secondary:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(53, 122, 189, 0.25);
+}
+
+/* Botón secundario deshabilitado */
+.btn-secondary:disabled,
+button.btn-secondary:disabled,
+.button-secondary:disabled {
+  background-color: #F8F9FA;
+  color: var(--light-text-placeholder);
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.65;
+}
+
+/* Botón secundario - Opción B (Outline) */
+.btn-outline,
+button.btn-outline,
+.button-outline {
+  background-color: transparent;
+  color: var(--nutri-blue);
+  border: 1px solid var(--nutri-blue);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, transform 0.1s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-outline:hover,
+button.btn-outline:hover,
+.button-outline:hover {
+  background-color: var(--nutri-blue);
+  color: var(--card-background);
+  transform: translateY(-1px);
+}
+
+.btn-outline:active,
+button.btn-outline:active,
+.button-outline:active {
+  background-color: #306BAA;
+  border-color: #306BAA;
+  transform: translateY(0);
+}
+
+.btn-outline:focus,
+button.btn-outline:focus,
+.button-outline:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(53, 122, 189, 0.25);
+}
+
+/* Botón outline deshabilitado */
+.btn-outline:disabled,
+button.btn-outline:disabled,
+.button-outline:disabled {
+  background-color: transparent;
+  color: var(--light-text-placeholder);
+  border-color: var(--light-text-placeholder);
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.65;
+}
+
+/* Variantes de tamaño para botones */
+.btn-small,
+.button-small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.btn-large,
+.button-large {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+/* Botones con iconos */
+.btn-with-icon,
+.button-with-icon {
+  gap: 8px;
+}
+
+.btn-with-icon .icon,
+.button-with-icon .icon {
+  font-size: 1em;
+}
+
+/* Grupo de botones */
+.btn-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-group.btn-group-inline {
+  flex-wrap: nowrap;
+}
+
+/* Responsive para botones en móviles */
+@media (max-width: 768px) {
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group .btn-primary,
+  .btn-group .btn-secondary,
+  .btn-group .btn-outline,
+  .btn-group .button-primary,
+  .btn-group .button-secondary,
+  .btn-group .button-outline {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .btn-group.btn-group-inline {
+    flex-direction: row;
+  }
+  
+  .btn-group.btn-group-inline .btn-primary,
+  .btn-group.btn-group-inline .btn-secondary,
+  .btn-group.btn-group-inline .btn-outline {
+    width: auto;
+    flex: 1;
+  }
+}
